@@ -1,0 +1,652 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Instore API Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#a-note-on-numbers" class="toc-h1 toc-link" data-title="A note on numbers">A note on numbers</a>
+          </li>
+          <li>
+            <a href="#orders" class="toc-h1 toc-link" data-title="Orders">Orders</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-submit-an-order" class="toc-h2 toc-link" data-title="Create/submit an order">Create/submit an order</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#data-format" class="toc-h1 toc-link" data-title="Data Format">Data Format</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#applieddiscount" class="toc-h2 toc-link" data-title="AppliedDiscount">AppliedDiscount</a>
+                  </li>
+                  <li>
+                    <a href="#appliedmodifier" class="toc-h2 toc-link" data-title="AppliedModifier">AppliedModifier</a>
+                  </li>
+                  <li>
+                    <a href="#appliedtax" class="toc-h2 toc-link" data-title="AppliedTax">AppliedTax</a>
+                  </li>
+                  <li>
+                    <a href="#order" class="toc-h2 toc-link" data-title="Order">Order</a>
+                  </li>
+                  <li>
+                    <a href="#orderline" class="toc-h2 toc-link" data-title="OrderLine">OrderLine</a>
+                  </li>
+                  <li>
+                    <a href="#payment" class="toc-h2 toc-link" data-title="Payment">Payment</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#example-orders" class="toc-h1 toc-link" data-title="Example Orders">Example Orders</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#simple-order" class="toc-h2 toc-link" data-title="Simple Order">Simple Order</a>
+                  </li>
+                  <li>
+                    <a href="#complex-order" class="toc-h2 toc-link" data-title="Complex Order">Complex Order</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+      </div>
+        <ul class="toc-footer">
+            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Instore partner API docs.  v1.0.0</p>
+<h1 id='a-note-on-numbers'>A note on numbers</h1>
+<p>In most programming languages doing math with floating point numbers (floats, doubles, reals, etc) introduces small amounts of error over time.<br>
+To avoid this problem the Instore API uses strings to pass any currency related numbers.  In the data specs you will see this referred to as a CURRENCY_STRING.</p>
+<h1 id='orders'>Orders</h1><h2 id='create-submit-an-order'>Create/submit an order</h2><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+-H <span class="s2">"api-key: your_key_here"</span> <span class="se">\</span>
+-d @order.json
+https://some.instore.server.com/incomingOrder
+</code></pre>
+<p>Used to provide a new order to Instore.  Can not be used to edit, only to create.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://some.instore.server.com/incomingOrder</code></p>
+<h3 id='post-body'>POST body</h3>
+<p>See &quot;Data Format -&gt; Order&quot;</p>
+<h1 id='data-format'>Data Format</h1><h2 id='applieddiscount'>AppliedDiscount</h2><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"discountId"</span>: UUIDv4,
+    <span class="s2">"name"</span>: STRING,
+    <span class="s2">"totalDiscount"</span>: CURRENCY_STRING
+<span class="o">}</span>
+</code></pre>
+<p>AppliedDiscounts are supplied when you want to make the merchant aware that a coupon or discount was used.  This allows for things like reporting how many times a particular marketing campaign was effective.  They can be applied to either orders (10% off your order!), or specific order lines (buy one thing, get second thing at %50 off!).</p>
+<h3 id='totaldiscount'>totalDiscount</h3>
+<p>Required.  Total amount discounted.</p>
+<h3 id='name'>name</h3>
+<p>Required. e.g. &quot;happy hour -10% off&quot;, appears on receipt</p>
+<h3 id='discountid'>discountId</h3>
+<p>Optional. Identifier for an Instore discount.  Enables better reporting.</p>
+<h2 id='appliedmodifier'>AppliedModifier</h2><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"modifierId"</span>: UUIDv4
+    <span class="s2">"name"</span>: STRING,
+    <span class="s2">"quantity"</span>: INTEGER,
+    <span class="s2">"unitPrice"</span>: CURRENCY_STRING,
+<span class="o">}</span>
+</code></pre>
+<p>An applied modifier is typically either a choice about a menu item (medium rare) or something extra you did to a menu item (add bacon).</p>
+<h3 id='modifierid'>modifierId</h3>
+<p>Optional.  Identifier for an Instore modifier.  Enables more detailed reporting.</p>
+<h3 id='name-2'>name</h3>
+<p>Required.  Appears on receipt.  e.g. &quot;Well done&quot; or &quot;Bacon&quot;</p>
+<h3 id='quantity'>quantity</h3>
+<p>Optional.  Defaults to 1.  Appears on receipt when not 1.  e.g. &quot;2&#215; bacon&quot;.</p>
+<h3 id='unitprice'>unitPrice</h3>
+<p>Required.  How much is charged when this modifier is added to an order line (bacon costs a dollar).  The order line&#39;s price should have been raised by (unitPrice &#215; quantity) before any discounts or taxes are applied.</p>
+<h2 id='appliedtax'>AppliedTax</h2><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"name"</span>: STRING,
+    <span class="s2">"amount"</span>: CURRENCY_STRING,
+    <span class="s2">"taxId"</span>: UUIDv4,
+<span class="o">}</span>
+</code></pre><h3 id='name-3'>name</h3>
+<p>Required.  Customer facing.  e.g. &quot;Sales Tax&quot;</p>
+<h3 id='amount'>amount</h3>
+<p>Required.  Total amount of tax (to be) collected.</p>
+<h3 id='taxid'>taxId</h3>
+<p>Optional.  Identifier for an Instore tax.  Enables more detailed reporting.</p>
+<h2 id='order'>Order</h2><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"address"</span>: <span class="o">{</span>
+        <span class="s2">"streetOne"</span>: STRING,
+        <span class="s2">"streetTwo"</span>: STRING,
+        <span class="s2">"city"</span>: STRING,
+        <span class="s2">"stateOrRegion"</span>: STRING,
+        <span class="s2">"postalCode"</span>: STRING,
+    <span class="o">}</span>
+
+    <span class="s2">"customer"</span>: <span class="o">{</span>
+        <span class="s2">"uniqueId"</span>: STRING,
+        <span class="s2">"email"</span>: STRING,
+        <span class="s2">"firstName"</span>: STRING,
+        <span class="s2">"lastName"</span>: STRING,
+        <span class="s2">"phone"</span>: STRING,
+    <span class="o">}</span>
+
+    <span class="s2">"customerFacingOrderNumber"</span>: STRING,
+    <span class="s2">"notes"</span>: STRING,
+    <span class="s2">"orderType"</span>: STRING,
+    <span class="s2">"orderDate"</span>: DATETIME,
+    <span class="s2">"orderSource"</span>: STRING,
+    <span class="s2">"orderTotal"</span>: CURRENCY_STRING,
+    <span class="s2">"uniqueId"</span>: STRING,
+
+    <span class="s2">"discounts"</span>: <span class="o">[</span> Array of AppliedDiscounts <span class="o">]</span>,
+    <span class="s2">"orderLines"</span>: <span class="o">[</span> Array of OrderLines <span class="o">]</span>,
+    <span class="s2">"payments"</span>: <span class="o">[</span> Array of Payments <span class="o">]</span>,
+    <span class="s2">"taxes"</span>: <span class="o">[</span> Array of AppliedTaxes <span class="o">]</span>
+<span class="o">}</span>
+</code></pre><h3 id='address'>address</h3>
+<p>Required for delivery orders, otherwise optional.  The address to which the order will be delivered.  US ZIP codes are placed in the postalCode field.</p>
+<h3 id='customer'>customer</h3>
+<p>Optional.  Information about the person that placed the order.</p>
+<h3 id='customer-uniqueid'>customer.uniqueId</h3>
+<p>Optional.  An ID number used to identify this record across transactions.  Can be used to tie multiple orders to the same person over time.</p>
+<h3 id='customer-phone'>customer.phone</h3>
+<p>Optional.  Instore will strip all non numeral characters.</p>
+<h3 id='customerfacingordernumber'>customerFacingOrderNumber</h3>
+<p>Optional.  Will be printed on the receipt.  Any order identifier that was sent to the customer as part of the checkout process.  Useful in customer service situations as it allows the customer to identify the order over the phone.</p>
+<h3 id='discounts'>discounts</h3>
+<p>See AppliedDiscounts.  Discounts that affect the whole order e.g. &quot;10% off Tuesdays&quot;.  Discounts on receipts etc. will appear in the same sort order as in this array.</p>
+<h3 id='notes'>notes</h3>
+<p>Optional.  Is printed on receipt.  Any kind of high level notes e.g. &quot;please knock on door around the side&quot;</p>
+<h3 id='ordertype'>orderType</h3>
+<p>Required.  One of [ &#39;forHere&#39;, &#39;delivery&#39;, &#39;takeout&#39; ]</p>
+<h3 id='orderdate'>orderDate</h3>
+<p>Required.  Date and time conforming to ISO 8601.  Used to determine age of order and to look order up by date in reporting.</p>
+<h3 id='orderlines'>orderLines</h3>
+<p>See OrderLine.  OrderLines on receipts etc. will appear in the same sort order as in this array.</p>
+<h3 id='ordersource'>orderSource</h3>
+<p>Optional.  e.g. &quot;Grubhub&quot;, helpful for customer service, understanding payment settlement, etc.</p>
+<h3 id='ordertotal'>orderTotal</h3>
+<p>Required.  Total owed by customer after nearly everything is considered including taxes, discounts, etc.  Basically: &quot;the amount the customer owes for the order.&quot;  Does not include tips.</p>
+<h3 id='payments'>payments</h3>
+<p>See Payment.  Payments on receipts etc. will appear in the same sort order as in this array.</p>
+<h3 id='taxes'>taxes</h3>
+<p>See AppliedTax.  AppliedTaxes on receipts etc. will appear in the same sort order as in this array.</p>
+<h3 id='uniqueid'>uniqueId</h3>
+<p>Optional.  Similar to customerFacingOrderNumber, but not customer facing.  A good spot to put an integer or UUID that will uniquely identify the order for internal tracking purposes.</p>
+<h2 id='orderline'>OrderLine</h2><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"itemId"</span>: UUIDv4,
+    <span class="s2">"itemName"</span>: STRING,
+    <span class="s2">"itemSizeId"</span>: UUIDv4,
+    <span class="s2">"itemSizeName"</span>: STRING,
+    <span class="s2">"note"</span>: STRING,
+    <span class="s2">"quantity"</span>: INTEGER,
+    <span class="s2">"unitPrice"</span>: CURRENCY_STRING,
+
+    <span class="s2">"discounts"</span>: <span class="o">[</span> See <span class="s1">'AppliedDiscount'</span> <span class="o">]</span>,
+    <span class="s2">"modifiers"</span>: <span class="o">[</span> See <span class="s1">'AppliedModifier'</span> <span class="o">]</span>,
+    <span class="s2">"taxes"</span>: <span class="o">[</span> See <span class="s1">'AppliedTax'</span> <span class="o">]</span>
+<span class="o">}</span>
+</code></pre><h3 id='itemid'>itemId</h3>
+<p>Optional.  Identifier for an Instore menu item.  Enables more detailed reporting.</p>
+<h3 id='itemname'>itemName:</h3>
+<p>Required.  Prints on receipts, kitchen tickets, etc. as the primary label for this order line e.g. &quot;Blue Cheese Burger&quot;.</p>
+<h3 id='itemsizeid'>itemSizeId:</h3>
+<p>Optional.  Identifier for an Instore menu item size.  Allows for more detailed reporting and is necessary for inventory counts to reflect this sale.</p>
+<h3 id='itemsizename'>itemSizeName</h3>
+<p>Optional.  Prints on receipt next to itemName as a subtitle.  Can be used for various things e.g. &quot;medium&quot; or &quot;kilograms&quot;.</p>
+<h3 id='note'>note</h3>
+<p>Optional.  Prints next to this particular order line on receipts and kitchen tickets.  Can be used for special item instructions e.g. &quot;hold the ketchup&quot;.</p>
+<h3 id='quantity-2'>quantity</h3>
+<p>Required.  </p>
+<h3 id='unitprice-2'>unitPrice</h3>
+<p>Required.  How much is charged for one unmodified unit of this menu item (one hamburger) before tax.  The order line&#39;s total price should have been (unitPrice &#215; quantity) before any discounts, taxes, or modifiers are applied.</p>
+<h3 id='discounts-2'>discounts</h3>
+<p>See AppliedDiscounts.  Discounts that affect just one order line e.g. &quot;Second burger is %50 off&quot;.  Discounts on receipts etc. will appear in the same sort order as in this array.</p>
+<h3 id='modifiers'>modifiers</h3>
+<p>See AppliedModifier.  AppliedModifiers on receipts etc. will appear in the same sort order as in this array.</p>
+<h3 id='taxes-2'>taxes</h3>
+<p>See AppliedTax.  These OrderLine level taxes are good for special taxes that only apply to certain things e.g. alcohol.  AppliedTaxes on receipts etc. will appear in the same sort order as in this array.</p>
+<h2 id='payment'>Payment</h2><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"cardHolderFirstName"</span>: STRING,
+    <span class="s2">"cardHolderLastName"</span>: STRING,
+    <span class="s2">"cardMaskedPan"</span>: STRING,
+    <span class="s2">"tip"</span>: <span class="o">{</span>
+        <span class="s2">"amount"</span>: CURRENCY_STRING,
+    <span class="o">}</span>,
+    <span class="s2">"totalAmount"</span>: CURRENCY_STRING,
+    <span class="s2">"transactionData"</span>: STRING
+<span class="o">}</span>
+</code></pre>
+<p>The presence or absence of payments is how Instore determines whether an order is fully paid.  Fully paid orders should have an order.orderTotal equal to the sum of (payment.totalAmount - payment.tip.amount).</p>
+<h3 id='cardholderfirstname-cardholderlastname'>cardHolderFirstName, cardHolderLastName</h3>
+<p>Optional.  Ideally the raw data from a card magnetic strip.  Should not be filled in with info from order.customer.</p>
+<h3 id='cardmaskedpan'>cardMaskedPan</h3>
+<p>Optional.  Last 4 appears on receipt.  Best format has at least the first 4 and last 4 from the payment card with the rest obscured e.g. &quot;4000••••••••1234&quot;.  Some payment processors obscure different numbers of digits, this is fine.  First 4 digits are used to determine card brand (Visa, etc.)  Last 4 are useful for identifying payments for customer service purposes.</p>
+<h3 id='tip-amount'>tip.amount</h3>
+<p>Optional.  Appears on receipt.</p>
+<h3 id='totalamount'>totalAmount</h3>
+<p>Required.  Total amount charged on this payment.  Appears on receipt associated with the payment.  Includes tip amount.</p>
+<h3 id='transactiondata'>transactionData</h3>
+<p>Optional.  Used to store arbitrary data from the payment processor such as transaction numbers, result codes, etc.  This field often contains JSON.</p>
+<h1 id='example-orders'>Example Orders</h1><h2 id='simple-order'>Simple Order</h2><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"orderType"</span>: <span class="s2">"takeout"</span>,
+    <span class="s2">"orderDate"</span>: <span class="s2">"2017-01-01T18:00:00Z"</span>,
+    <span class="s2">"orderTotal"</span>: <span class="s2">"</span><span class="nv">$10</span><span class="s2">.50"</span>,
+    <span class="s2">"orderLines"</span>: <span class="o">[{</span>
+        <span class="s2">"unitPrice"</span>: <span class="s2">"</span><span class="nv">$10</span><span class="s2">.00"</span>,
+        <span class="s2">"itemName"</span>: <span class="s2">"Cheeseburger"</span>,
+        <span class="s2">"quantity"</span>: 1,
+    <span class="o">}]</span>,
+    <span class="s2">"taxes"</span>: <span class="o">[{</span>
+        <span class="s2">"amount"</span>: <span class="s2">"</span><span class="nv">$0</span><span class="s2">.50"</span>
+        <span class="s2">"name"</span>: <span class="s2">"%5 Sales Tax"</span>
+    <span class="o">}]</span>
+<span class="o">}</span>
+</code></pre>
+<p>A very basic order designed to show how simple things can be.  This is an unpaid order (it will be paid upon pickup) for a single item.</p>
+<h2 id='complex-order'>Complex Order</h2><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"address"</span>: <span class="o">{</span>
+      <span class="s2">"streetOne"</span>: <span class="s2">"123 Customer Street."</span>,
+      <span class="s2">"streetTwo"</span>: <span class="s2">"Unit A"</span>,
+      <span class="s2">"city"</span>: <span class="s2">"Pizza Town"</span>,
+      <span class="s2">"stateOrRegion"</span>: <span class="s2">"CA"</span>,
+      <span class="s2">"postalCode"</span>: <span class="s2">"98765"</span>
+  <span class="o">}</span>
+  <span class="s2">"customer"</span>: <span class="o">{</span>
+      <span class="s2">"uniqueId"</span>: <span class="s2">"123456"</span>,
+      <span class="s2">"email"</span>: <span class="s2">"example@example.com"</span>,
+      <span class="s2">"firstName"</span>: <span class="s2">"Bob"</span>,
+      <span class="s2">"lastName"</span>: <span class="s2">"Boberson"</span>,
+      <span class="s2">"phone"</span>: <span class="s2">"555.555.5555"</span>
+  <span class="o">}</span>
+  <span class="s2">"customerFacingOrderNumber"</span>: <span class="s2">"Order 123-abc-Q"</span>,
+  <span class="s2">"notes"</span>: <span class="s2">"Onion allergy, please no onions."</span>,
+  <span class="s2">"orderType"</span>: <span class="s2">"delivery"</span>,
+  <span class="s2">"orderDate"</span>: <span class="s2">"2017-01-01T18:00:00Z"</span>,
+  <span class="s2">"orderSource"</span>: <span class="s2">"foodwebsite.com"</span>,
+  <span class="s2">"orderTotal"</span>: <span class="s2">"</span><span class="nv">$3</span><span class="s2">.78"</span>,
+  <span class="s2">"uniqueId"</span>: <span class="s2">"d0cbd097-e82c-4614-81a1-dd6c37b5003e"</span>
+  <span class="s2">"discounts"</span>: <span class="o">[{</span>
+      <span class="s2">"totalDiscount"</span>: <span class="s2">"-</span><span class="nv">$0</span><span class="s2">.40"</span>,
+      <span class="s2">"name"</span>: <span class="s2">"%10 percent off Tuesdays"</span>,
+      <span class="s2">"discountId"</span>: <span class="s2">"8245056d-9a14-4baf-b4c7-20ceab82096a"</span>
+  <span class="o">}]</span>,
+  <span class="s2">"orderLines"</span>: <span class="o">[{</span>
+      <span class="s2">"itemId"</span>: <span class="s2">"8298a33d-c4f5-43d9-bfe3-de8c1c682cfb"</span>,
+      <span class="s2">"itemName"</span>: <span class="s2">"Dollar Burger"</span>,
+      <span class="s2">"itemSizeId"</span>: <span class="s2">"2a9e748a-be58-4d35-8893-55c3c3b56f34"</span>,
+      <span class="s2">"itemSizeName"</span>: <span class="s2">"Extra Huge"</span>,
+      <span class="s2">"note"</span>: <span class="s2">"Ketchup on the side"</span>,
+      <span class="s2">"quantity"</span>: 2,
+      <span class="s2">"unitPrice"</span>: <span class="s2">"</span><span class="nv">$1</span><span class="s2">.00"</span>,
+      <span class="s2">"discounts"</span>: <span class="o">[</span> <span class="o">]</span>,
+      <span class="s2">"modifiers"</span>: <span class="o">[{</span>
+          <span class="s2">"modifierId"</span>: <span class="s2">"d16de64b-011a-45a7-929c-07717657ece4"</span>
+          <span class="s2">"name"</span>: <span class="s2">"Lettuce"</span>,
+          <span class="s2">"quantity"</span>: 1,
+          <span class="s2">"unitPrice"</span>: <span class="s2">"</span><span class="nv">$0</span><span class="s2">.00"</span>,
+      <span class="o">}</span>,
+      <span class="o">{</span>
+          <span class="s2">"modifierId"</span>: <span class="s2">"1d256f5f-54a0-4ddc-9969-3328dfb05527"</span>
+          <span class="s2">"name"</span>: <span class="s2">"Tomato"</span>,
+          <span class="s2">"quantity"</span>: 1,
+          <span class="s2">"unitPrice"</span>: <span class="s2">"</span><span class="nv">$0</span><span class="s2">.00"</span>,
+      <span class="o">}</span>,
+      <span class="o">{</span>
+          <span class="s2">"modifierId"</span>: <span class="s2">"3ccd8a77-ae68-4105-b573-fbee3fbad11d"</span>
+          <span class="s2">"name"</span>: <span class="s2">"Bacon"</span>,
+          <span class="s2">"quantity"</span>: 1,
+          <span class="s2">"unitPrice"</span>: <span class="s2">"</span><span class="nv">$1</span><span class="s2">.00"</span>,
+      <span class="o">}]</span>,
+  <span class="o">}</span>,
+  <span class="o">{</span>
+      <span class="s2">"unitPrice"</span>: <span class="s2">"</span><span class="nv">$5</span><span class="s2">.00"</span>,
+      <span class="s2">"itemId"</span>: <span class="s2">"05ac1153-10b6-4a1c-a1ce-754dd6e665d3"</span>,
+      <span class="s2">"itemName"</span>: <span class="s2">"Hat full o' fries"</span>,
+      <span class="s2">"itemSizeId"</span>: <span class="s2">"4819f34f-a413-4b69-b710-9778048b7782"</span>,
+      <span class="s2">"itemSizeName"</span>: <span class="s2">"Really big"</span>,
+      <span class="s2">"note"</span>: <span class="s2">"Don't skimp on the salt!"</span>,
+      <span class="s2">"quantity"</span>: 1,
+      <span class="s2">"discounts"</span>: <span class="o">[{</span>
+          <span class="s2">"totalDiscount"</span>: <span class="s2">"</span><span class="nv">$5</span><span class="s2">.00"</span>
+          <span class="s2">"name"</span>: <span class="s2">"Free fries!"</span>
+          <span class="s2">"discountId"</span>: <span class="s2">"e029bf88-8378-4714-992e-8bdda89660c9"</span>
+      <span class="o">}]</span>,
+      <span class="s2">"modifiers"</span>: <span class="o">[{</span>
+          <span class="s2">"modifierId"</span>: <span class="s2">"4d3974c0-e05d-4fb6-a947-83ea92f7f518"</span>,
+          <span class="s2">"name"</span>: <span class="s2">"Wedges"</span>,
+          <span class="s2">"unitPrice"</span>: <span class="s2">"</span><span class="nv">$0</span><span class="s2">.00"</span>,
+      <span class="o">}]</span>,
+  <span class="o">}]</span>,
+  <span class="s2">"payments"</span>: <span class="o">[{</span>
+      <span class="s2">"cardHolderFirstName"</span>: <span class="s2">"Robert"</span>,
+      <span class="s2">"cardHolderLastName"</span>: <span class="s2">"Bobberson"</span>,
+      <span class="s2">"cardMaskedPan"</span>: <span class="s2">"4000********1234"</span>,
+      <span class="s2">"tip"</span>: <span class="o">{</span>
+          <span class="s2">"amount"</span>: <span class="s2">"</span><span class="nv">$1</span><span class="s2">.00"</span>,
+      <span class="o">}</span>,
+      <span class="s2">"totalAmount"</span>: <span class="s2">"</span><span class="nv">$6</span><span class="s2">.00"</span>,
+      <span class="s2">"transactionData"</span>: <span class="s2">"{ </span><span class="se">\"</span><span class="s2">someTransactionNumber</span><span class="se">\"</span><span class="s2"> : 1234, </span><span class="se">\"</span><span class="s2">someBatchNumber</span><span class="se">\"</span><span class="s2"> : 4321 }"</span>
+  <span class="o">}</span>,
+  <span class="o">{</span>
+      <span class="s2">"cardHolderFirstName"</span>: <span class="s2">"Roberta"</span>,
+      <span class="s2">"cardHolderLastName"</span>: <span class="s2">"Bobberson"</span>,
+      <span class="s2">"cardMaskedPan"</span>: <span class="s2">"4000********4321"</span>,
+      <span class="s2">"totalAmount"</span>: <span class="s2">"</span><span class="nv">$5</span><span class="s2">.00"</span>,
+      <span class="s2">"transactionData"</span>: <span class="s2">"234567"</span>
+  <span class="o">}]</span>,
+  <span class="s2">"taxes"</span>: <span class="o">[{</span>
+      <span class="s2">"name"</span>: <span class="s2">"%5 Sales Tax"</span>,
+      <span class="s2">"amount"</span>: <span class="s2">"</span><span class="nv">$0</span><span class="s2">.18"</span>,
+      <span class="s2">"taxId"</span>: <span class="s2">"85821765-be37-4771-a92d-a0bbf55fedbd"</span>,
+  <span class="o">}]</span>
+<span class="o">}</span>
+</code></pre>
+<p>This order has multiple complex order lines, and multiple payments.  Here&#39;s a walkthrough of calculating the order total.</p>
+
+<table><thead>
+<tr>
+<th>Amount</th>
+<th>Reason</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>2.00</td>
+<td>Dollar Burger (1.00 x 2)</td>
+</tr>
+<tr>
+<td>2.00</td>
+<td>bacon on burger (1.00 x 2)</td>
+</tr>
+<tr>
+<td>5.00</td>
+<td>Hat o&#39; Fries</td>
+</tr>
+<tr>
+<td>- 5.00</td>
+<td>Free Fries discount (order line level)</td>
+</tr>
+<tr>
+<td>------</td>
+<td>------</td>
+</tr>
+<tr>
+<td>4.00</td>
+<td>Bill total</td>
+</tr>
+<tr>
+<td>- 0.40</td>
+<td>%10 Tuesday&#39;s discount (order level)</td>
+</tr>
+<tr>
+<td>0.18</td>
+<td>%5 Sales tax (order level)</td>
+</tr>
+<tr>
+<td>------</td>
+<td>------</td>
+</tr>
+<tr>
+<td>3.78</td>
+<td>Order Total</td>
+</tr>
+</tbody></table>
+<h1 id='errors'>Errors</h1>
+<p>The Instore API uses standard HTTP status codes to report error conditions.  The response body will often contain specific detail on what is wrong, especially in the event of a 4xx response.  The most common responses are...</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- The request is incorrect or illegal in some way.  Details in the response body.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- API key trouble.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden -- This API key doesn&#39;t allow this activity.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- A server problem.  A bug report was generated and sent to Instore.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable -- Usually a response from our load balancer.  Try again after a short time.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
