@@ -225,10 +225,13 @@
             <a href="#a-note-on-numbers-and-currency" class="toc-h1 toc-link" data-title="A note on numbers and currency">A note on numbers and currency</a>
           </li>
           <li>
-            <a href="#orders" class="toc-h1 toc-link" data-title="Orders">Orders</a>
+            <a href="#orders-endpoints" class="toc-h1 toc-link" data-title="Orders endpoints">Orders endpoints</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#create-submit-an-order" class="toc-h2 toc-link" data-title="Create/submit an order">Create/submit an order</a>
+                  </li>
+                  <li>
+                    <a href="#check-order-status" class="toc-h2 toc-link" data-title="Check order status">Check order status</a>
                   </li>
               </ul>
           </li>
@@ -278,7 +281,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Instore partner API docs.  v1.0.2</p>
+<p>Instore partner API docs.  v1.0.3</p>
 <h1 id='a-note-on-numbers-and-currency'>A note on numbers and currency</h1>
 <p>In most programming languages doing math with floating point numbers (floats, doubles, reals, etc) introduces small amounts of error over time.  To avoid this problem the Instore API uses strings to pass any currency related numbers.  In the data specs you will see this referred to as a CURRENCY_STRING or a FLOAT_STRING.</p>
 
@@ -316,7 +319,7 @@
 <li>&quot;1234.56&quot;</li>
 <li>&quot;0.89&quot;</li>
 </ul>
-<h1 id='orders'>Orders</h1><h2 id='create-submit-an-order'>Create/submit an order</h2><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+<h1 id='orders-endpoints'>Orders endpoints</h1><h2 id='create-submit-an-order'>Create/submit an order</h2><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
 -H <span class="s2">"api-key: [- your_key_here -]"</span> <span class="se">\</span>
 -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -d @order.json <span class="se">\</span>
@@ -327,6 +330,39 @@ https://some.instore.server.com/incomingOrders
 <p><code>POST https://some.instore.server.com/incomingOrders</code></p>
 <h3 id='post-body'>POST body</h3>
 <p>See &quot;Data Format -&gt; Order&quot;</p>
+<h2 id='check-order-status'>Check order status</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+-H <span class="s2">"api-key: [- your_key_here -]"</span> <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+https://some.instore.server.com/incomingOrders/summary/:locationId?date<span class="o">=</span>YYYY-MM-DD
+</code></pre><pre class="highlight shell tab-shell"><code>Example output
+<span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"customerFacingOrderNumber"</span>: null,
+        <span class="s2">"hasReachedIPad"</span>: <span class="nb">true</span>,
+        <span class="s2">"instoreId"</span>: <span class="s2">"cb96ad8e-37dc-4fe8-8774-9fdcebba3d95"</span>,
+        <span class="s2">"instoreReceivedAt"</span>: <span class="s2">"2017-01-01T19:58:20.025Z"</span>,
+        <span class="s2">"orderDate"</span>: <span class="s2">"2017-01-01T18:00:00Z"</span>,
+        <span class="s2">"orderSource"</span>: null,
+        <span class="s2">"orderTotal"</span>: <span class="s2">"</span><span class="nv">$10</span><span class="s2">.50"</span>,
+        <span class="s2">"uniqueId"</span>: null
+    <span class="o">}</span>
+<span class="o">]</span>
+</code></pre>
+<p>Will return a list of all of the orders submitted via the incomingOrders endpoint to a given location on a given day.  The day will be in the location&#39;s local time zone.</p>
+
+<p>The &quot;date&quot; argument is optional and refers to the &quot;instoreReceivedAt&quot; field.  It defaults to &quot;today&quot;.</p>
+<h3 id='example-url'>Example URL</h3>
+<p><code>https://some.instore.server.com/incomingOrders/summary/48b63b2b-ca18-4634-8516-f464d008e646?date=2017-01-01</code></p>
+<h3 id='instoreid'>instoreId</h3>
+<p>A unique ID number assigned to all incoming orders by Instore.</p>
+<h3 id='instorereceivedat'>instoreReceivedAt</h3>
+<p>The date/time at which Instore received the order.  Typically the moment a POST call to /incomingOrders was processed.</p>
+<h3 id='hasreachedipad'>hasReachedIPad</h3>
+<p>This is true once the order has been delivered to the merchant&#39;s iPad.  Typically this means the order will have printed from a receipt printer.  If this value is false Instore is actively attempting to deliver the order to the iPad, which may be sleeping or out of Wi-Fi range etc.</p>
+
+<p>Note that the order will not appear in Instore Office until this is true.</p>
+<h3 id='customerfacingordernumber-orderdate-ordersource-ordertotal-uniqueid'>customerFacingOrderNumber, orderDate, orderSource, orderTotal, uniqueId</h3>
+<p>Values taken from the submitted order itself.</p>
 <h1 id='data-format'>Data Format</h1><h2 id='applieddiscount'>AppliedDiscount</h2><pre class="highlight shell tab-shell"><code><span class="o">{</span>
     <span class="s2">"discountId"</span>: UUIDv4,
     <span class="s2">"name"</span>: STRING,
