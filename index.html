@@ -281,7 +281,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Instore partner API docs.  v1.0.3</p>
+<p>Instore partner API docs.  v1.0.4</p>
 <h1 id='a-note-on-numbers-and-currency'>A note on numbers and currency</h1>
 <p>In most programming languages doing math with floating point numbers (floats, doubles, reals, etc) introduces small amounts of error over time.  To avoid this problem the Instore API uses strings to pass any currency related numbers.  In the data specs you will see this referred to as a CURRENCY_STRING or a FLOAT_STRING.</p>
 
@@ -565,32 +565,26 @@ https://some.instore.server.com/incomingOrders/summary/:locationId?date<span cla
   <span class="s2">"uniqueId"</span>: <span class="s2">"d0cbd097-e82c-4614-81a1-dd6c37b5003e"</span>,
   <span class="s2">"discounts"</span>: <span class="o">[{</span>
       <span class="s2">"totalDiscount"</span>: <span class="s2">"</span><span class="nv">$0</span><span class="s2">.40"</span>,
-      <span class="s2">"name"</span>: <span class="s2">"%10 percent off Tuesdays"</span>,
-      <span class="s2">"discountId"</span>: <span class="s2">"8245056d-9a14-4baf-b4c7-20ceab82096a"</span>
+      <span class="s2">"name"</span>: <span class="s2">"%10 percent off Tuesdays"</span>
   <span class="o">}]</span>,
   <span class="s2">"orderLines"</span>: <span class="o">[{</span>
-      <span class="s2">"itemId"</span>: <span class="s2">"8298a33d-c4f5-43d9-bfe3-de8c1c682cfb"</span>,
       <span class="s2">"itemName"</span>: <span class="s2">"Dollar Burger"</span>,
-      <span class="s2">"itemSizeId"</span>: <span class="s2">"2a9e748a-be58-4d35-8893-55c3c3b56f34"</span>,
       <span class="s2">"itemSizeName"</span>: <span class="s2">"Extra Huge"</span>,
       <span class="s2">"note"</span>: <span class="s2">"Ketchup on the side"</span>,
       <span class="s2">"quantity"</span>: <span class="s2">"2"</span>,
       <span class="s2">"unitPrice"</span>: <span class="s2">"</span><span class="nv">$1</span><span class="s2">.00"</span>,
       <span class="s2">"discounts"</span>: <span class="o">[</span> <span class="o">]</span>,
       <span class="s2">"modifiers"</span>: <span class="o">[{</span>
-          <span class="s2">"modifierId"</span>: <span class="s2">"d16de64b-011a-45a7-929c-07717657ece4"</span>,
           <span class="s2">"name"</span>: <span class="s2">"Lettuce"</span>,
           <span class="s2">"quantity"</span>: 1,
           <span class="s2">"unitPrice"</span>: <span class="s2">"</span><span class="nv">$0</span><span class="s2">.00"</span>
       <span class="o">}</span>,
       <span class="o">{</span>
-          <span class="s2">"modifierId"</span>: <span class="s2">"1d256f5f-54a0-4ddc-9969-3328dfb05527"</span>,
           <span class="s2">"name"</span>: <span class="s2">"Tomato"</span>,
           <span class="s2">"quantity"</span>: 1,
           <span class="s2">"unitPrice"</span>: <span class="s2">"</span><span class="nv">$0</span><span class="s2">.00"</span>
       <span class="o">}</span>,
       <span class="o">{</span>
-          <span class="s2">"modifierId"</span>: <span class="s2">"3ccd8a77-ae68-4105-b573-fbee3fbad11d"</span>,
           <span class="s2">"name"</span>: <span class="s2">"Bacon"</span>,
           <span class="s2">"quantity"</span>: 1,
           <span class="s2">"unitPrice"</span>: <span class="s2">"</span><span class="nv">$1</span><span class="s2">.00"</span>
@@ -598,19 +592,15 @@ https://some.instore.server.com/incomingOrders/summary/:locationId?date<span cla
   <span class="o">}</span>,
   <span class="o">{</span>
       <span class="s2">"unitPrice"</span>: <span class="s2">"</span><span class="nv">$5</span><span class="s2">.00"</span>,
-      <span class="s2">"itemId"</span>: <span class="s2">"05ac1153-10b6-4a1c-a1ce-754dd6e665d3"</span>,
       <span class="s2">"itemName"</span>: <span class="s2">"Hat full o' fries"</span>,
-      <span class="s2">"itemSizeId"</span>: <span class="s2">"4819f34f-a413-4b69-b710-9778048b7782"</span>,
       <span class="s2">"itemSizeName"</span>: <span class="s2">"Really big"</span>,
       <span class="s2">"note"</span>: <span class="s2">"Don't skimp on the salt!"</span>,
       <span class="s2">"quantity"</span>: <span class="s2">"1"</span>,
       <span class="s2">"discounts"</span>: <span class="o">[{</span>
           <span class="s2">"totalDiscount"</span>: <span class="s2">"</span><span class="nv">$5</span><span class="s2">.00"</span>,
-          <span class="s2">"name"</span>: <span class="s2">"Free fries!"</span>,
-          <span class="s2">"discountId"</span>: <span class="s2">"e029bf88-8378-4714-992e-8bdda89660c9"</span>
+          <span class="s2">"name"</span>: <span class="s2">"Free fries!"</span>
       <span class="o">}]</span>,
       <span class="s2">"modifiers"</span>: <span class="o">[{</span>
-          <span class="s2">"modifierId"</span>: <span class="s2">"4d3974c0-e05d-4fb6-a947-83ea92f7f518"</span>,
           <span class="s2">"name"</span>: <span class="s2">"Wedges"</span>,
           <span class="s2">"unitPrice"</span>: <span class="s2">"</span><span class="nv">$0</span><span class="s2">.00"</span>
       <span class="o">}]</span>
@@ -622,20 +612,19 @@ https://some.instore.server.com/incomingOrders/summary/:locationId?date<span cla
       <span class="s2">"tip"</span>: <span class="o">{</span>
           <span class="s2">"amount"</span>: <span class="s2">"</span><span class="nv">$1</span><span class="s2">.00"</span>
       <span class="o">}</span>,
-      <span class="s2">"totalAmount"</span>: <span class="s2">"</span><span class="nv">$6</span><span class="s2">.00"</span>,
+      <span class="s2">"totalAmount"</span>: <span class="s2">"</span><span class="nv">$2</span><span class="s2">.78"</span>,
       <span class="s2">"transactionData"</span>: <span class="s2">"{ </span><span class="se">\"</span><span class="s2">someTransactionNumber</span><span class="se">\"</span><span class="s2"> : 1234, </span><span class="se">\"</span><span class="s2">someBatchNumber</span><span class="se">\"</span><span class="s2"> : 4321 }"</span>
   <span class="o">}</span>,
   <span class="o">{</span>
       <span class="s2">"cardHolderFirstName"</span>: <span class="s2">"Roberta"</span>,
       <span class="s2">"cardHolderLastName"</span>: <span class="s2">"Bobberson"</span>,
       <span class="s2">"cardMaskedPan"</span>: <span class="s2">"4000********4321"</span>,
-      <span class="s2">"totalAmount"</span>: <span class="s2">"</span><span class="nv">$5</span><span class="s2">.00"</span>,
+      <span class="s2">"totalAmount"</span>: <span class="s2">"</span><span class="nv">$2</span><span class="s2">.00"</span>,
       <span class="s2">"transactionData"</span>: <span class="s2">"234567"</span>
   <span class="o">}]</span>,
   <span class="s2">"taxes"</span>: <span class="o">[{</span>
       <span class="s2">"name"</span>: <span class="s2">"%5 Sales Tax"</span>,
-      <span class="s2">"amount"</span>: <span class="s2">"</span><span class="nv">$0</span><span class="s2">.18"</span>,
-      <span class="s2">"taxId"</span>: <span class="s2">"85821765-be37-4771-a92d-a0bbf55fedbd"</span>
+      <span class="s2">"amount"</span>: <span class="s2">"</span><span class="nv">$0</span><span class="s2">.18"</span>
   <span class="o">}]</span>
 <span class="o">}</span>
 </code></pre>
