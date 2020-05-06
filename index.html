@@ -222,6 +222,9 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
+            <a href="#api-docs-changelog" class="toc-h1 toc-link" data-title="API docs changelog">API docs changelog</a>
+          </li>
+          <li>
             <a href="#a-note-on-numbers-and-currency" class="toc-h1 toc-link" data-title="A note on numbers and currency">A note on numbers and currency</a>
           </li>
           <li>
@@ -281,7 +284,39 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Instore partner API docs.  v1.0.4</p>
+<p>Instore partner API docs.  v1.0.5</p>
+<h1 id='api-docs-changelog'>API docs changelog</h1>
+<ul>
+<li>v1.0.0</li>
+<li>v1.0.1
+
+<ul>
+<li>Clairified section on currency strings.</li>
+<li>Changes for clairity and correctness for incomingOrders endpoint.</li>
+<li>Fixed formatting of JSON order examples.<br></li>
+</ul></li>
+<li>v1.0.2
+
+<ul>
+<li>Fixed a few small errors in the curl examples.</li>
+</ul></li>
+<li>v1.0.3
+
+<ul>
+<li>Added incoming order status endpoint.</li>
+</ul></li>
+<li>v1.0.4
+
+<ul>
+<li>Removed instore id UUIDs from examples, as anyone trying to use those examples directly will get errors for not having matching menu items etc.</li>
+<li>Fixed complex order example to add up correctly to the order total.</li>
+</ul></li>
+<li>v1.0.5
+
+<ul>
+<li>Clairified information on the orderDate field with examples in the correct format.</li>
+</ul></li>
+</ul>
 <h1 id='a-note-on-numbers-and-currency'>A note on numbers and currency</h1>
 <p>In most programming languages doing math with floating point numbers (floats, doubles, reals, etc) introduces small amounts of error over time.  To avoid this problem the Instore API uses strings to pass any currency related numbers.  In the data specs you will see this referred to as a CURRENCY_STRING or a FLOAT_STRING.</p>
 
@@ -455,7 +490,16 @@ https://some.instore.server.com/incomingOrders/summary/:locationId?date<span cla
 <h3 id='ordertype'>orderType</h3>
 <p>Required.  One of [ &#39;forHere&#39;, &#39;delivery&#39;, &#39;takeout&#39; ]</p>
 <h3 id='orderdate'>orderDate</h3>
-<p>Required.  Date and time conforming to ISO 8601.  Used to determine age of order and to look order up by date in reporting.</p>
+<p>Required.  Date and time conforming to ISO 8601.  Used to determine age of order and to look up the order by date in reporting.  Note that Instore&#39;s date parser (Apple&#39;s NSDateFormatter) is rather picky.  It is best to exactly conform to the example formats below.</p>
+
+<p>In most cases Instore presents dates to merchants in the local time zone of the business.  Dates submitted in a different time zone will be converted to &quot;merchant local time&quot; by Instore.</p>
+
+<p>Examples of correctly formatted dates.</p>
+
+<ul>
+<li>2017-05-05T15:00:00-0500</li>
+<li>2017-05-05T20:00:00Z</li>
+</ul>
 <h3 id='orderlines'>orderLines</h3>
 <p>See OrderLine.  OrderLines on receipts etc. will appear in the same sort order as in this array.</p>
 <h3 id='ordersource'>orderSource</h3>
